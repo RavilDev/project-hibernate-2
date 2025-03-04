@@ -5,6 +5,8 @@ import org.example.safargulov.projecthibernate2.dto.InventoryDto;
 import org.example.safargulov.projecthibernate2.entity.Inventory;
 import org.example.safargulov.projecthibernate2.repository.BaseRepository;
 
+import java.util.Optional;
+
 @Getter
 public class InventoryService {
     private final BaseRepository<Inventory, Integer> repository;
@@ -30,6 +32,11 @@ public class InventoryService {
                 .film(filmService.toEntity(inventoryDto.getFilm()))
                 .store(storeService.toEntity(inventoryDto.getStore()))
                 .build();
+    }
+
+
+    public Optional<Inventory> find(Integer id) {
+        return repository.find(id);
     }
 
 }

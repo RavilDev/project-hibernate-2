@@ -5,6 +5,8 @@ import org.example.safargulov.projecthibernate2.dto.StoreDto;
 import org.example.safargulov.projecthibernate2.entity.Store;
 import org.example.safargulov.projecthibernate2.repository.BaseRepository;
 
+import java.util.Optional;
+
 
 public class StoreService {
     @Getter
@@ -30,6 +32,10 @@ public class StoreService {
                 .manager(staffService.toEntity(storeDto.getManager()))
                 .address(addressService.toEntity(storeDto.getAddress()))
                 .build();
+    }
+
+    public Optional<Store> find(Integer id) {
+        return repository.find(id);
     }
 
 }

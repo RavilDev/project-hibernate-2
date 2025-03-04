@@ -55,17 +55,17 @@ public class Film {
     @Column(name = "last_update", insertable = false, updatable = false, nullable = false)
     private Timestamp lastUpdate;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "language_id", nullable = false)
     private Language language;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "original_language_id")
     private Language originalLanguage;
 
-    @OneToMany(mappedBy = "film")
+    @OneToMany(mappedBy = "film", cascade = CascadeType.ALL)
     private List<FilmActor> filmActor;
 
-    @OneToMany(mappedBy = "film")
-    private List<FilmActor> filmCategory;
+    @OneToMany(mappedBy = "film", cascade = CascadeType.ALL)
+    private List<FilmCategory> filmCategory;
 }
