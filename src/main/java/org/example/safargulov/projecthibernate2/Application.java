@@ -7,7 +7,7 @@ import org.hibernate.Session;
 public class Application {
     public static void main(String[] args) {
         new DataBaseConfig().init();
-        SessionCreator creator = new SessionCreator(); // Предполагаю, что это твой класс для SessionFactory
+        SessionCreator creator = new SessionCreator();
         try (Session session = creator.getSession()) {
             System.out.println("Hibernate initialized successfully");
         } catch (Exception e) {
