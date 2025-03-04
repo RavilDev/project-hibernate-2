@@ -16,7 +16,7 @@ public class Language {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "language_id")
-    private Byte id;
+    private Byte languageId;
 
     @Column(name = "name", columnDefinition = "CHAR(20)", nullable = false)
     private String name;

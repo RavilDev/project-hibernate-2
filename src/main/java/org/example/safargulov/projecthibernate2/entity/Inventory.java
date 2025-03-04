@@ -18,7 +18,7 @@ public class Inventory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "inventory_id")
-    private Integer id;
+    private Integer inventoryId;
 
     @ManyToOne
     @JoinColumn(name = "film_id", nullable = false)

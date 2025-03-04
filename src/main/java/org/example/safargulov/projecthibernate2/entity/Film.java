@@ -22,7 +22,7 @@ public class Film {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "film_id")
-    private Short Id;
+    private Short filmId;
 
     @Column(name = "title", nullable = false)
     private String title;

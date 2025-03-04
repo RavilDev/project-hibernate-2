@@ -18,7 +18,7 @@ public class Rental {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "rental_id")
-    private Integer id;
+    private Integer rentalId;
 
     @Column(name = "rental_date", nullable = false)
     private LocalDateTime rentalDate;

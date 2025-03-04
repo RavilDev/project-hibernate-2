@@ -18,7 +18,7 @@ public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "payment_id")
-    private Short id;
+    private Short paymentId;
 
     @Column(name = "amount", nullable = false)
     private BigDecimal amount;
