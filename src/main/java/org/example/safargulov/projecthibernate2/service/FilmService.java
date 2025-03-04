@@ -1,5 +1,6 @@
 package org.example.safargulov.projecthibernate2.service;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.example.safargulov.projecthibernate2.config.SessionCreator;
 import org.example.safargulov.projecthibernate2.dto.FilmActorDto;
@@ -14,20 +15,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Getter
+@AllArgsConstructor
 public class FilmService {
     private final BaseRepository<Film, Integer> repository;
     private final FilmActorService filmActorService;
     private final FilmCategoryService filmCategoryService;
     private final LanguageService languageService;
     private final StoreService storeService;
-
-    public FilmService(BaseRepository<Film, Integer> repository, FilmActorService filmActorService, FilmCategoryService filmCategoryService, LanguageService languageService, StoreService storeService) {
-        this.repository = repository;
-        this.filmActorService = filmActorService;
-        this.filmCategoryService = filmCategoryService;
-        this.languageService = languageService;
-        this.storeService = storeService;
-    }
 
     public Film toEntity(FilmDto filmDto) {
         List<FilmActor> filmActorList = filmDto.getFilmActors().stream().map(filmActorService::toEntity).toList();
@@ -59,7 +53,7 @@ public class FilmService {
                 .build();
     }
 
-    public FilmDto createRentableFilm(FilmDto filmDto, Integer storeId) throws Exception {
+    public FilmDto createRentableFilm(FilmDto filmDto, Byte storeId) throws Exception {
         if (filmDto == null || filmDto.getTitle() == null || filmDto.getLanguage() == null) {
             throw new IllegalArgumentException("Film data is incomplete");
         }

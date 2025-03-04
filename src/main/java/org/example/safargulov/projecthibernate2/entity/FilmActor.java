@@ -17,11 +17,11 @@ import java.sql.Timestamp;
 public class FilmActor {
     @Id
     @Column(name = "actor_id", nullable = false)
-    private Long actorId;
+    private Short actorId;
 
     @Id
     @Column(name = "film_id", nullable = false)
-    private Long filmId;
+    private Short filmId;
 
     @Column(name = "last_update", insertable = false, updatable = false, nullable = false)
     private Timestamp lastUpdate;
@@ -33,5 +33,4 @@ public class FilmActor {
     @ManyToOne
     @JoinColumn(name = "actor_id", nullable = false)
     private Actor actor;
-
 }

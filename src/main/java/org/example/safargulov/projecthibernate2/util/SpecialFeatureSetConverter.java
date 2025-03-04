@@ -1,16 +1,16 @@
 package org.example.safargulov.projecthibernate2.util;
 
 import jakarta.persistence.AttributeConverter;
+import jakarta.persistence.Converter;
 import org.example.safargulov.projecthibernate2.entity.SpecialFeature;
 
 import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@Converter
 public class SpecialFeatureSetConverter implements AttributeConverter<Set<SpecialFeature>, String> {
-
     public static final String SEPARATOR = ",";
-
 
     @Override
     public String convertToDatabaseColumn(Set<SpecialFeature> specialFeatures) {
@@ -18,7 +18,7 @@ public class SpecialFeatureSetConverter implements AttributeConverter<Set<Specia
             return "";
         }
         return specialFeatures.stream()
-                .map(this::formatFeature)
+                .map(feature -> feature.name().substring(0, 1) + feature.name().substring(1).toLowerCase())
                 .collect(Collectors.joining(SEPARATOR));
     }
 
@@ -29,16 +29,8 @@ public class SpecialFeatureSetConverter implements AttributeConverter<Set<Specia
         }
         return Arrays.stream(s.split(SEPARATOR))
                 .map(String::trim)
+                .map(String::toUpperCase)
                 .map(SpecialFeature::valueOf)
                 .collect(Collectors.toSet());
-    }
-
-    private String formatFeature(SpecialFeature feature) {
-        return switch (feature) {
-            case TRAILERS -> "Trailers";
-            case COMMENTARIES -> "Commentaries";
-            case DELETED_SCENES -> "Deleted Scenes";
-            case BEHIND_THE_SCENES -> "Behind the Scenes";
-        };
     }
 }

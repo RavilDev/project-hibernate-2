@@ -1,21 +1,17 @@
 package org.example.safargulov.projecthibernate2.service;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.example.safargulov.projecthibernate2.dto.StaffDto;
 import org.example.safargulov.projecthibernate2.entity.Staff;
 import org.example.safargulov.projecthibernate2.repository.BaseRepository;
 
+@Getter
+@AllArgsConstructor
 public class StaffService {
-    @Getter
     private final BaseRepository<Staff, Integer> repository;
     private final StoreService storeService;
     private final AddressService addressService;
-
-    public StaffService(BaseRepository<Staff, Integer> repository, StoreService storeService, AddressService addressService) {
-        this.repository = repository;
-        this.storeService = storeService;
-        this.addressService = addressService;
-    }
 
     public StaffDto toDto(Staff staff) {
         return StaffDto.builder()

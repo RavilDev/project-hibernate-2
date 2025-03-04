@@ -1,5 +1,6 @@
 package org.example.safargulov.projecthibernate2.service;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.example.safargulov.projecthibernate2.dto.InventoryDto;
 import org.example.safargulov.projecthibernate2.entity.Inventory;
@@ -8,17 +9,11 @@ import org.example.safargulov.projecthibernate2.repository.BaseRepository;
 import java.util.Optional;
 
 @Getter
+@AllArgsConstructor
 public class InventoryService {
     private final BaseRepository<Inventory, Integer> repository;
     private final StoreService storeService;
     private final FilmService filmService;
-
-
-    public InventoryService(BaseRepository<Inventory, Integer> repository, StoreService storeService, FilmService filmService) {
-        this.repository = repository;
-        this.storeService = storeService;
-        this.filmService = filmService;
-    }
 
     public InventoryDto toDto(Inventory inventory) {
         return InventoryDto.builder()

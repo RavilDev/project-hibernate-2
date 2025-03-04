@@ -13,12 +13,13 @@ import java.sql.Timestamp;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "country")
 public class Country {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "country_id")
-    private Integer id;
+    private Short id;
 
     @Column(name = "country", nullable = false)
     private String country;

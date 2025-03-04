@@ -11,12 +11,13 @@ import java.sql.Timestamp;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "store")
 public class Store {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "store_id")
-    private Integer id;
+    private Byte id;
 
     @Column(name = "last_update", insertable = false, updatable = false, nullable = false)
     private Timestamp lastUpdate;

@@ -1,21 +1,18 @@
 package org.example.safargulov.projecthibernate2.service;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import org.example.safargulov.projecthibernate2.dto.PaymentDto;
 import org.example.safargulov.projecthibernate2.entity.Payment;
 import org.example.safargulov.projecthibernate2.repository.BaseRepository;
 
+@Getter
+@AllArgsConstructor
 public class PaymentService {
     private final BaseRepository<Payment, Integer> repository;
     private final StaffService staffService;
     private final CustomerService customerService;
     private final RentalService rentalService;
-
-    public PaymentService(BaseRepository<Payment, Integer> repository, StaffService staffService, CustomerService customerService, RentalService rentalService) {
-        this.repository = repository;
-        this.staffService = staffService;
-        this.customerService = customerService;
-        this.rentalService = rentalService;
-    }
 
     public PaymentDto toDto(Payment payment) {
         return PaymentDto.builder()

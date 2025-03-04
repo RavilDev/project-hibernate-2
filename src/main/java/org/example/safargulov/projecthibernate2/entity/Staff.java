@@ -12,11 +12,12 @@ import java.sql.Timestamp;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "staff")
 public class Staff {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "staff_id")
-    private Long id;
+    private Byte id;
 
     @Column(name = "first_name", nullable = false)
     private String firstName;
@@ -25,7 +26,7 @@ public class Staff {
     private String lastName;
 
     @Lob
-    @Column(name = "picture")
+    @Column(name = "picture", columnDefinition = "BLOB" )
     private Blob picture;
 
     @Column(name = "email")

@@ -1,9 +1,13 @@
 package org.example.safargulov.projecthibernate2.service;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import org.example.safargulov.projecthibernate2.dto.CountryDto;
 import org.example.safargulov.projecthibernate2.entity.Country;
 import org.example.safargulov.projecthibernate2.repository.BaseRepository;
 
+@Getter
+@AllArgsConstructor
 public class CountryService {
     BaseRepository<Country, Integer> repository;
 

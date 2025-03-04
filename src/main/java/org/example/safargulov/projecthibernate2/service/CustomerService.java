@@ -1,5 +1,7 @@
 package org.example.safargulov.projecthibernate2.service;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import org.example.safargulov.projecthibernate2.config.SessionCreator;
 import org.example.safargulov.projecthibernate2.dto.*;
 import org.example.safargulov.projecthibernate2.entity.Customer;
@@ -11,26 +13,19 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
+@Getter
+@AllArgsConstructor
 public class CustomerService {
-    private final BaseRepository<Customer, Integer> customerRepository;
+    private final BaseRepository<Customer, Short> customerRepository;
     private final AddressService addressService;
     private final StoreService storeService;
     private final RentalService rentalService;
     private final StaffService staffService;
     private final InventoryService inventoryService;
-
-
-    public CustomerService(BaseRepository<Customer, Integer> repository, AddressService addressService, StoreService storeService, RentalService rentalService, StaffService staffService, InventoryService inventoryService) {
-        this.customerRepository = repository;
-        this.addressService = addressService;
-        this.storeService = storeService;
-        this.rentalService = rentalService;
-        this.staffService = staffService;
-        this.inventoryService = inventoryService;
-    }
 
     public CustomerDto toDto(Customer customer) {
         return CustomerDto.builder()
@@ -62,7 +57,7 @@ public class CustomerService {
         return toDto(customer);
     }
 
-    public RentalDto returnRentalFilm(Integer customerId, Integer rentalId) {
+    public RentalDto returnRentalFilm(Short customerId, Integer rentalId) {
         Optional<Rental> rental = rentalService.find(rentalId);
         Optional<Customer> customer = customerRepository.find(customerId);
         if (rental.isEmpty() || customer.isEmpty()) {
@@ -84,7 +79,7 @@ public class CustomerService {
     public RentalDto rentFilmAndPayInStore(CustomerDto customerDto,
                                            StaffDto staffDto,
                                            Integer inventoryId,
-                                           Integer storeId
+                                           Byte storeId
     ) throws Exception {
         SessionCreator creator = new SessionCreator();
         Transaction transaction = null;
@@ -108,7 +103,7 @@ public class CustomerService {
                         .inventory(inventory)
                         .build();
                 Payment payment = Payment.builder()
-                        .amount(100)
+                        .amount(new BigDecimal(100))
                         .customer(this.toEntity(customerDto))
                         .paymentDate(LocalDateTime.now())
                         .staff(staffService.toEntity(staffDto))

@@ -16,7 +16,7 @@ public class FilmDto {
     private String title;
     private String description;
     private LocalDateTime releaseYear;
-    private Integer length;
+    private Short length;
     private Set<SpecialFeature> specialFeatures;
     private LanguageDto language;
     private LanguageDto originalLanguage;

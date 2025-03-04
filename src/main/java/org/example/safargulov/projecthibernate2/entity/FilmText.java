@@ -13,7 +13,7 @@ import lombok.*;
 public class FilmText {
     @Id
     @Column(name = "film_id", nullable = false)
-    private Integer filmId;
+    private Short filmId;
 
     @Column(name = "title", nullable = false)
     private String title;

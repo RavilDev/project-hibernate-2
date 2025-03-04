@@ -2,9 +2,6 @@ package org.example.safargulov.projecthibernate2.entity.id;
 
 import lombok.*;
 
-import jakarta.persistence.*;
-
-import java.io.Serializable;
 import java.util.Objects;
 
 @Getter
@@ -12,12 +9,8 @@ import java.util.Objects;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Embeddable
-public class FilmCategoryId implements Serializable {
-    @Column(name = "film_id")
+public class FilmCategoryId {
     private Long filmId;
-
-    @Column(name = "category_id")
     private Long categoryId;
 
     @Override

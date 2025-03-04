@@ -2,6 +2,7 @@ package org.example.safargulov.projecthibernate2.dto;
 
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Getter
@@ -10,7 +11,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 public class PaymentDto {
-    private double amount;
+    private BigDecimal amount;
     private LocalDateTime paymentDate;
     private CustomerDto customer;
     private StaffDto staff;

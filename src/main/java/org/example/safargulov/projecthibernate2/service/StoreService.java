@@ -1,5 +1,6 @@
 package org.example.safargulov.projecthibernate2.service;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.example.safargulov.projecthibernate2.dto.StoreDto;
 import org.example.safargulov.projecthibernate2.entity.Store;
@@ -7,18 +8,13 @@ import org.example.safargulov.projecthibernate2.repository.BaseRepository;
 
 import java.util.Optional;
 
-
+@Getter
+@AllArgsConstructor
 public class StoreService {
-    @Getter
-    private final BaseRepository<Store, Integer> repository;
+
+    private final BaseRepository<Store, Byte> repository;
     private final StaffService staffService;
     private final AddressService addressService;
-
-    public StoreService(BaseRepository<Store, Integer> repository, StaffService staffService, AddressService addressService) {
-        this.repository = repository;
-        this.staffService = staffService;
-        this.addressService = addressService;
-    }
 
     public StoreDto toDto(Store store) {
         return StoreDto.builder()
@@ -34,7 +30,7 @@ public class StoreService {
                 .build();
     }
 
-    public Optional<Store> find(Integer id) {
+    public Optional<Store> find(Byte id) {
         return repository.find(id);
     }
 

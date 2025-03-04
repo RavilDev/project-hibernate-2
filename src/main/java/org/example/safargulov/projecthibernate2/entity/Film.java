@@ -5,8 +5,8 @@ import lombok.*;
 import org.example.safargulov.projecthibernate2.util.SpecialFeatureSetConverter;
 
 import java.math.BigDecimal;
+import java.sql.Date;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 
@@ -16,12 +16,13 @@ import java.util.Set;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "film")
 public class Film {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "film_id")
-    private Integer Id;
+    private Short Id;
 
     @Column(name = "title", nullable = false)
     private String title;
@@ -30,16 +31,16 @@ public class Film {
     private String description;
 
     @Column(name = "release_year")
-    private LocalDateTime releaseYear;
+    private Date releaseYear;
 
     @Column(name = "rental_duration", nullable = false, insertable = false)
-    private Integer rentalDuration;
+    private Byte rentalDuration;
 
     @Column(name = "rental_rate", nullable = false, insertable = false)
     private BigDecimal rentalRate;
 
     @Column(name = "length")
-    private Integer length;
+    private Short length;
 
     @Column(name = "replacement_cost", nullable = false, insertable = false)
     private BigDecimal replacementCost;
@@ -49,7 +50,7 @@ public class Film {
     private Rating rating;
 
     @Convert(converter = SpecialFeatureSetConverter.class)
-    @Column(name = "special_features")
+    @Column(name = "special_features", columnDefinition = "SET('Trailers','Commentaries','Deleted Scenes','Behind the Scenes')")
     private Set<SpecialFeature> specialFeatures;
 
     @Column(name = "last_update", insertable = false, updatable = false, nullable = false)

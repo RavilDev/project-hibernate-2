@@ -1,19 +1,17 @@
 package org.example.safargulov.projecthibernate2.service;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.example.safargulov.projecthibernate2.dto.AddressDto;
 import org.example.safargulov.projecthibernate2.entity.Address;
 import org.example.safargulov.projecthibernate2.repository.BaseRepository;
 
+@Getter
+@AllArgsConstructor
 public class AddressService {
-    @Getter
+
     private final BaseRepository<Address, Integer> repository;
     private final CityService cityService;
-
-    public AddressService(BaseRepository<Address, Integer> repository, CityService cityService) {
-        this.repository = repository;
-        this.cityService = cityService;
-    }
 
     public AddressDto toDto(Address address) {
         return AddressDto.builder()

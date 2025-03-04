@@ -1,21 +1,17 @@
 package org.example.safargulov.projecthibernate2.service;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.example.safargulov.projecthibernate2.dto.FilmActorDto;
 import org.example.safargulov.projecthibernate2.entity.FilmActor;
 import org.example.safargulov.projecthibernate2.repository.BaseRepository;
 
 @Getter
+@AllArgsConstructor
 public class FilmActorService {
     private final BaseRepository<FilmActor, Integer> repository;
     private final FilmService filmService;
     private final ActorService actorService;
-
-    public FilmActorService(BaseRepository<FilmActor, Integer> repository, FilmService filmService, ActorService actorService) {
-        this.repository = repository;
-        this.filmService = filmService;
-        this.actorService = actorService;
-    }
 
     public FilmActorDto toDto(FilmActor filmActor) {
         return FilmActorDto.builder()

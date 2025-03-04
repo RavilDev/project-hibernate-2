@@ -12,11 +12,12 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "category")
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "category_id")
-    private Integer id;
+    private Byte id;
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -24,6 +25,6 @@ public class Category {
     @Column(name = "last_update", insertable = false, updatable = false, nullable = false)
     private Timestamp lastUpdate;
 
-    @OneToMany(mappedBy = "category")
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private List<FilmCategory> filmCategory;
 }

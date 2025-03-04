@@ -3,6 +3,7 @@ package org.example.safargulov.projecthibernate2.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
@@ -12,14 +13,15 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "payment")
 public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "payment_id")
-    private Integer id;
+    private Short id;
 
     @Column(name = "amount", nullable = false)
-    private double amount;
+    private BigDecimal amount;
 
     @Column(name = "payment_date", nullable = false)
     private LocalDateTime paymentDate;

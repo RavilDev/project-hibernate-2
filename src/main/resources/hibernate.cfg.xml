@@ -19,7 +19,7 @@
         <mapping class="org.example.safargulov.projecthibernate2.entity.Country"/>
         <mapping class="org.example.safargulov.projecthibernate2.entity.Customer"/>
         <mapping class="org.example.safargulov.projecthibernate2.entity.Film"/>
-        <mapping class="org.example.safargulov.projecthibernate2.entity.FilmActor"/>
+        <mapping class="org.example.safargulov.projecthibernate2.entity.FilmCategory"/>
         <mapping class="org.example.safargulov.projecthibernate2.entity.FilmActor"/>
         <mapping class="org.example.safargulov.projecthibernate2.entity.FilmText"/>
         <mapping class="org.example.safargulov.projecthibernate2.entity.Inventory"/>
